@@ -1,0 +1,22 @@
+{
+  "name": "coopart-contracts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:ethereum": "ganache-cli -m 'layer post chase message demise fresh resource beyond bulb rose garden kite'",
+    "compile": "tronbox compile",
+    "test": "tronbox test",
+    "deploy": "source .env && tronbox migrate --reset --network nile"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "truffle": "^5.0.29"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.7.0",
+    "ganache-cli": "^6.5.1",
+    "nuxt": "^2.15.7"
+  }
+}
