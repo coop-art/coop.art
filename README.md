@@ -8,6 +8,9 @@
 4. Finally, at some point, the admin selects some layers, merge them and mint a TRC721 NFT.
 5. The NFT is sold on a marketplace like ApeNFT, and each artist that contibuted to the final canvas will receive a share of the sale (Coop.art sets up royalties automaticaly in the metadata based on the final number of layers during the merge).
 
+![](./src/frontend/public/ogimage.png)
+(Note the custom Tron Pendant art we created ^^)
+
 ## Inspiration
 
 I first got the idea to create Coop.art from looking at the [$69 million Beeple's NFT](https://www.theverge.com/2021/3/11/22325054/beeple-christies-nft-sale-cost-everydays-69-million). The piece of art is made from 5,000 tiles merged together into a common canvas. I thought it would be great if each tile was made by a different author, and so Coop.art was born. Many artists can contribute layers to a common canvas that is then sold as a single piece, and profits are shared between all of them.
