@@ -1,5 +1,8 @@
 ## About Coop.art
 
+Live Demo : [coop.art](https://coop.art)
+Video Demo : Uploading...
+
 **Coop.art** [ koh-op-ahrt ] is a tool allowing artist on Tron to create a canvas cooperatively. The process is:
 
 1. An artist create a new canvas and becomes its admin.
@@ -17,7 +20,7 @@ I first got the idea to create Coop.art from looking at the [$69 million Beeple'
 
 ## Getting started
 
-The platform is live at [coop.art](https://coop.art) and running on the _Tron Shasta Testnet_. I coded the smart contract in Solidity and integrated the frontend with IPFS for token metadata upload and storage.
+The platform is live at [coop.art](https://coop.art) and running on the _Tron Nile Testnet_. I coded the smart contract in Solidity and integrated the frontend with IPFS's [NFT.storage](https://nft.storage/) for uploading and storing the token metadata.
 
 Click _Connect wallet_ and TronLink will open to ask you for authorization. Your Tron address should then appear in the top right corner.
 
@@ -37,9 +40,9 @@ Head over to `Ongoing Canvases` to see canvases you can contribute to. You shoul
 
 Now, what if someone ruins a canvas with an inappropriate layer? That's where voting comes into play. If you believe a layer should not be in a canvas, you can downvote it to be removed. On the contrary, if you believe a layer is a perfect match for the canvas, you can upvote it to keep it up. If a layer has more downvotes than upvotes, it is hidden by default. Ultimatly, the admin of the canvas is the one that will choose the layers to add or remove from the canvas mint, but this will help him choose. (We first wanted to code fully decentralized version with no admin, like each canvas being its own DAO, but realized this wouldn't work, people with more voting powers could overtake the initial vision of the first layer artist, so we decided on a more centralized approach.)
 
-## Sell canvas
+## Merge and Sell canvas
 
-After a certain period, the admin of a canvas will decide to close it by selecting and merging the final layers into a merged art. Coop.art takes care of everthing, it was quite difficult to automate everything but this makes things much easier for artists. The admin can click `Close and Mint Canvas`, coop.art fuses the selected layers (and discards the unselected ones), uploads the final art to IPFS then generates the NFT metadata with royalties setup automatically based on the contribution of each artist. E.g., if a canvas has 5 final layers, each layer creator will receive 20%. If someone contributed 2 layers to that canvas, he will receive 40% royalties. The canvas is compliant with TRC721 and can be sold on any markeplace such as ApeNFT.
+After a certain period, the admin of a canvas will decide to close it by selecting and merging the final layers into a merged art. Coop.art takes care of everthing, click `Merge Canvas` and coop.art will merge the selected layers into a signle PNG (and discards the unselected layers), upload the final art to IPFS and generate and upload the NFT metadata using [NFT.storage](https://nft.storage/). Note that the metadata contains the royalties setup automatically by coop.art based on the contribution of each artist to the final canvas. E.g., if a canvas has 5 final layers, then each layer creator will receive 20%. If someone contributed 2 layers to that canvas, he will receive 40% royalties. The canvas is compliant with TRC721 and can be sold on any markeplace such as [ApeNFT](https://apenft.io/).
 
 ## Conclusion
 

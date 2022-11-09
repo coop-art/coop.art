@@ -26,5 +26,5 @@ tronbox compile
 Deploy contract:
 
 ```
-tronbox migrate --reset --network shasta
+tronbox migrate --reset --network nile
 ```
