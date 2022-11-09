@@ -1,4 +1,4 @@
-import { Canvas } from 'pages/Canvas/Canvas.controller'
+import { Canvas } from '../pages/Canvas/Canvas.controller'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import { Provider, TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
