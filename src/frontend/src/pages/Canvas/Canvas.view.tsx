@@ -2,7 +2,6 @@ import { Button } from 'app/App.components/Button/Button.view'
 import dayjs from 'dayjs'
 import { create } from 'ipfs-http-client'
 import { useEffect, useState } from 'react'
-import { useAlert } from 'react-alert'
 import { Buffer } from 'buffer'
 
 import { CanvasStage } from './Canvas.stage'
@@ -57,7 +56,6 @@ export const CanvasView = ({
   const [newLayer, setNewLayer] = useState<Layer | undefined>()
   const [isUploading, setIsUploading] = useState(false)
   const [isMinting, setIsMinting] = useState(false)
-  const alert = useAlert()
   const [canvasId, setCanvasId] = useState(urlCanvasId)
 
   useEffect(() => {
@@ -106,7 +104,6 @@ export const CanvasView = ({
         }
       }
     } catch (error: any) {
-      alert.error(error.message)
       console.error(error)
       setIsUploading(false)
     }
@@ -145,7 +142,6 @@ export const CanvasView = ({
 
       setIsMinting(false)
     } catch (error: any) {
-      alert.error(error.message)
       console.error(error)
       setIsMinting(false)
     }

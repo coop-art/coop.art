@@ -1,9 +1,8 @@
 import * as React from 'react'
 import { useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { State } from 'reducers'
-import { Message } from 'styles'
 
 import { CanvasView, Layer } from './Canvas.view'
 
@@ -41,19 +40,13 @@ export const Canvas = () => {
   }, [])
 
   return (
-    <div>
-      {address ? (
-        <CanvasView
-          loadingLayers={loadingLayers}
-          mintCallback={mintCallback}
-          voteCallback={voteCallback}
-          address={address}
-          existingLayers={existingLayers}
-          urlCanvasId={canvasId}
-        />
-      ) : (
-        <Message>Please connect your wallet</Message>
-      )}
-    </div>
+    <CanvasView
+      loadingLayers={loadingLayers}
+      mintCallback={mintCallback}
+      voteCallback={voteCallback}
+      address={address}
+      existingLayers={existingLayers}
+      urlCanvasId={canvasId}
+    />
   )
 }

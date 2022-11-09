@@ -41,7 +41,7 @@ export const CanvasStage = ({ existingLayers, newLayer, updateLayerCallback }: C
           {existingLayers.map((layer) => (
             <CanvasImage
               key={layer.layerId}
-              url={layer.image.replace('ipfs://', 'https://ipfs.infura.io/ipfs/')}
+              url={layer.image.replace('ipfs://', 'https://ipfs.io/ipfs/')}
               imgProps={{
                 x: layer.x,
                 y: layer.y,
@@ -54,7 +54,7 @@ export const CanvasStage = ({ existingLayers, newLayer, updateLayerCallback }: C
           ))}
           {newLayer && (
             <CanvasImage
-              url={newLayer.image.replace('ipfs://', 'https://ipfs.infura.io/ipfs/')}
+              url={newLayer.image.replace('ipfs://', 'https://ipfs.io/ipfs/')}
               imgProps={imageAttrs}
               isSelected={true}
               onChange={(newAttrs: any) => {
