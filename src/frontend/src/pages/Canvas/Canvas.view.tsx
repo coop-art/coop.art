@@ -5,9 +5,8 @@ import { useEffect, useState } from 'react'
 import { Buffer } from 'buffer'
 
 import { CanvasStage } from './Canvas.stage'
-import { Vote } from './Canvas.controller'
 // prettier-ignore
-import { CanvasLoading, CanvasLeftMenu, CanvasStyled, CanvasRightMenu, SimpleButton, LayerVoting, CanvasLayers, CanvasLayer, CanvasLayerDetails, CanvasLayerVotes, CanvasLayerCheckbox } from "./Canvas.style";
+import { CanvasLeftMenu, CanvasStyled, CanvasRightMenu, CanvasLayers, CanvasLayer, CanvasLayerDetails, CanvasLayerVotes, CanvasLayerCheckbox, SimpleButton } from "./Canvas.style";
 
 const projectId = process.env.REACT_APP_INFURA_API_ID
 const projectSecret = process.env.REACT_APP_INFURA_API_SECRET
@@ -26,16 +25,35 @@ const client = create({
 
 type CanvasViewProps = {
   loadingLayers: boolean
-  mintCallback: (mintProps: any) => Promise<any>
-  voteCallback: (voteProps: Vote) => Promise<any>
+  addLayerCallback: ({
+    canvasId,
+    imageUri,
+    author,
+    x,
+    y,
+    r,
+    width,
+    height,
+  }: {
+    canvasId: number
+    imageUri: string
+    author: string
+    x: number
+    y: number
+    r: number
+    width: number
+    height: number
+  }) => Promise<any>
+  upVoteCallback: (layerId: number) => Promise<any>
+  downVoteCallback: (layerId: number) => Promise<any>
   address?: string
   existingLayers: Layer[]
-  urlCanvasId?: string
+  canvasId?: number
 }
 
 export type Layer = {
   layerId: number
-  canvasId: string
+  canvasId: number
   x: number
   y: number
   r: number
@@ -47,24 +65,17 @@ export type Layer = {
 
 export const CanvasView = ({
   loadingLayers,
-  mintCallback,
-  voteCallback,
+  addLayerCallback,
+  upVoteCallback,
+  downVoteCallback,
   address,
   existingLayers,
-  urlCanvasId,
+  canvasId,
 }: CanvasViewProps) => {
   const [newLayer, setNewLayer] = useState<Layer | undefined>()
   const [isUploading, setIsUploading] = useState(false)
   const [isMinting, setIsMinting] = useState(false)
-  const [canvasId, setCanvasId] = useState(urlCanvasId)
-
-  useEffect(() => {
-    if (!urlCanvasId) setCanvasId((Math.random() + 1).toString(36).substring(7))
-  }, [urlCanvasId])
-
-  async function handleVote(layerId: number, up: boolean) {
-    voteCallback({ layerId, up })
-  }
+  const [selectedLayer, setSelectedLayer] = useState<Layer | undefined>()
 
   async function handleUpload(file: File) {
     const layerId = Math.floor(Math.random() * 1000000) //TODO: Implement better layerId
@@ -88,7 +99,7 @@ export const CanvasView = ({
           console.log('onload', this.width, this.height)
           setNewLayer({
             layerId,
-            canvasId: canvasId as string,
+            canvasId: canvasId!,
             x: 0,
             y: 0,
             r: 0,
@@ -120,7 +131,7 @@ export const CanvasView = ({
         description: 'Coopart Layer',
         image: layer.image,
         layerId: layer.layerId,
-        canvasId: canvasId as string,
+        canvasId,
         x: layer.x, // TODO: Store doubles
         y: layer.y,
         r: layer.r,
@@ -138,7 +149,16 @@ export const CanvasView = ({
       console.log('tokenUri', tokenUri)
 
       // Mint token
-      mintCallback({ tokenUri, canvasId: canvasId as string })
+      addLayerCallback({
+        canvasId: canvasId!,
+        imageUri: layer.image,
+        author: address!,
+        x: layer.x,
+        y: layer.x,
+        r: layer.r,
+        width: layer.width,
+        height: layer.height,
+      })
 
       setIsMinting(false)
     } catch (error: any) {
@@ -158,9 +178,10 @@ export const CanvasView = ({
       <CanvasLeftMenu>
         <div>
           <label htmlFor="uploader">
-            <Button icon="upload" loading={isUploading}>
+            {/* <Button icon="upload" loading={isUploading}>
               New Layer
-            </Button>
+            </Button> */}
+            <SimpleButton>New Layer</SimpleButton>
           </label>
           <input
             hidden
@@ -202,14 +223,14 @@ export const CanvasView = ({
       </CanvasLeftMenu>
 
       <CanvasRightMenu>
-        {existingLayers.map((layer: Layer) => (
-          <LayerVoting>
-            <img alt="layer" src={layer.image} />
-            <div>Layer ID {layer.layerId}</div>
-            <img alt="check" src="/icons/check.svg" onClick={() => handleVote(layer.layerId, true)} />
-            <img alt="cross" src="/icons/cross.svg" onClick={() => handleVote(layer.layerId, false)} />
-          </LayerVoting>
-        ))}
+        {selectedLayer && (
+          <div>
+            <img alt="layer" src={selectedLayer.image} />
+            <div>Layer ID {selectedLayer.layerId}</div>
+            <img alt="up" src="/icons/up.svg" onClick={() => upVoteCallback(selectedLayer.layerId)} />
+            <img alt="down" src="/icons/down.svg" onClick={() => downVoteCallback(selectedLayer.layerId)} />
+          </div>
+        )}
       </CanvasRightMenu>
     </CanvasStyled>
   )

@@ -318,7 +318,34 @@
         </g>
     </symbol>
 
-
+    <symbol id="up" viewBox="0 0 24 24">
+        <g>
+            <path d="M20 15C20.828 15 21.5 15.672 21.5 16.5C21.5 17.329 20.828 18 20 18H19C19.828 18 20.5 18.672 20.5 19.5C20.5 20.329 19.828 20.5 19 20.5C19 20.5 15 20.5 12.5 20.5C9.649 20.5 9 20 5.5 19.5V11C7.95 11 12 6.5 12 2.5C12 0.918997 14.188 0.329997 15 3.219C15.5 5 14 8.5 14 8.5H22C22.828 8.5 23.5 9.172 23.5 10C23.5 10.829 22.828 12 22 12H21C21.828 12 22.5 12.672 22.5 13.5C22.5 14.329 21.828 15 21 15H20Z" stroke="white" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M5.5 9.5H0.5V21.5H5.5V9.5Z" stroke="white" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M3.5 19C3.224 19 3 19.224 3 19.5C3 19.776 3.224 20 3.5 20C3.776 20 4 19.776 4 19.5C4 19.224 3.776 19 3.5 19Z" fill="white"/>
+        </g>
+        <g id="Invisible_Shape">
+            <rect fill="none" stroke="none" width="24" height="24"></rect>
+        </g>
+    </symbol>
+    <symbol id="XXX" viewBox="0 0 24 24">
+        <g></g>
+        <g id="Invisible_Shape">
+            <rect fill="none" stroke="none" width="24" height="24"></rect>
+        </g>
+    </symbol>
+    <symbol id="XXX" viewBox="0 0 24 24">
+        <g></g>
+        <g id="Invisible_Shape">
+            <rect fill="none" stroke="none" width="24" height="24"></rect>
+        </g>
+    </symbol>
+    <symbol id="XXX" viewBox="0 0 24 24">
+        <g></g>
+        <g id="Invisible_Shape">
+            <rect fill="none" stroke="none" width="24" height="24"></rect>
+        </g>
+    </symbol>
     <symbol id="XXX" viewBox="0 0 24 24">
         <g></g>
         <g id="Invisible_Shape">

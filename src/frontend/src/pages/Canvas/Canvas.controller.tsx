@@ -1,15 +1,10 @@
 import * as React from 'react'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { State } from 'reducers'
 
 import { CanvasView, Layer } from './Canvas.view'
-
-export type Vote = {
-  layerId: number
-  up: boolean
-}
 
 export const Canvas = () => {
   const { address } = useSelector((state: State) => state.wallet)
@@ -17,7 +12,12 @@ export const Canvas = () => {
 
   const [loadingLayers, setLoadingLayers] = useState(false)
   const [existingLayers, setExistingLayers] = useState<Layer[]>([])
-  let { canvasId } = useParams<{ canvasId?: string }>()
+  let { urlCanvasId } = useParams()
+  let canvasId = useRef<number | undefined>(undefined)
+
+  useEffect(() => {
+    canvasId.current = urlCanvasId ? parseInt(urlCanvasId, 10) : undefined
+  }, [urlCanvasId])
 
   const loadStorage = React.useCallback(async () => {
     if (canvasId) {
@@ -31,22 +31,32 @@ export const Canvas = () => {
     loadStorage()
   }, [loadStorage])
 
-  const mintCallback = React.useCallback(async ({ layerId, up }: Vote) => {
+  const updateMetaCallback = React.useCallback(async () => {
     //todo
   }, [])
 
-  const voteCallback = React.useCallback(async ({ layerId, up }: Vote) => {
+  const addLayerCallback = React.useCallback(async () => {
     //todo
   }, [])
 
+  const upVoteCallback = React.useCallback(async (layerId: number) => {
+    //todo
+  }, [])
+
+  const downVoteCallback = React.useCallback(async (layerId: number) => {
+    //todo
+  }, [])
+
+  console.log('canvasId', canvasId)
   return (
     <CanvasView
       loadingLayers={loadingLayers}
-      mintCallback={mintCallback}
-      voteCallback={voteCallback}
+      addLayerCallback={addLayerCallback}
+      upVoteCallback={upVoteCallback}
+      downVoteCallback={downVoteCallback}
       address={address}
       existingLayers={existingLayers}
-      urlCanvasId={canvasId}
+      canvasId={canvasId.current}
     />
   )
 }

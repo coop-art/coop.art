@@ -27,7 +27,7 @@ export const App = () => {
           <Menu />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/edit/:canvasId" element={<Canvas />} />
+            <Route path="/edit/:urlCanvasId" element={<Canvas />} />
           </Routes>
         </AppContainer>
         <Toaster />

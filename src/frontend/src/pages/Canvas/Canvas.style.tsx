@@ -33,12 +33,16 @@ export const CanvasRightMenu = styled.div`
 export const SimpleButton = styled.div`
   cursor: pointer;
   background: ${textColor};
-  border-radius: 5px;
   padding: 10px;
+  font-size: 14px;
   color: ${backgroundColor};
   text-align: center;
   font-weight: bold;
-  height: 36px;
+  height: 40px;
+  border: 1px solid ${textColor};
+  box-sizing: border-box;
+  border-radius: 10px;
+  margin-bottom: 10px;
 `
 
 const turn = keyframes`
@@ -60,31 +64,6 @@ export const CanvasLoading = styled.div`
     stroke: ${textColor};
     margin-right: 10px;
     margin-bottom: -8px;
-  }
-`
-
-export const LayerVoting = styled.div`
-  margin: 20px 0;
-  display: grid;
-  grid-template-columns: 40% 30% 15% 15%;
-  grid-gap: 10px;
-  background-color: #1f1f1f;
-  border-radius: 10px;
-  padding: 10px;
-
-  > img:nth-child(1) {
-    max-height: 100px;
-    max-width: 200px;
-  }
-
-  > div {
-    line-height: 100px;
-  }
-
-  > img:nth-child(3),
-  > img:nth-child(4) {
-    margin: 40px;
-    cursor: pointer;
   }
 `
 
