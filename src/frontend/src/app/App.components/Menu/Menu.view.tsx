@@ -23,7 +23,9 @@ export const MenuView = ({
   return (
     <MenuStyled>
       <MenuBar>
-        <Link to="/">{/* <MenuLogo alt="CoopArt" src="/logo.svg" /> */}</Link>
+        <Link to="/">
+          <MenuLogo alt="CoopArt" src="/logo.svg" />
+        </Link>
         <div />
         <MenuLeft>
           <Link to="/">All Canvas</Link>

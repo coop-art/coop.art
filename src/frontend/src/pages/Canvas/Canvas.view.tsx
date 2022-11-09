@@ -7,7 +7,7 @@ import { Buffer } from 'buffer'
 import { CanvasStage } from './Canvas.stage'
 import { Vote } from './Canvas.controller'
 // prettier-ignore
-import { CanvasLoading, CanvasLeftMenu, CanvasStyled, CanvasRightMenu, SimpleButton, LayerVoting } from "./Canvas.style";
+import { CanvasLoading, CanvasLeftMenu, CanvasStyled, CanvasRightMenu, SimpleButton, LayerVoting, CanvasLayers, CanvasLayer, CanvasLayerDetails, CanvasLayerVotes, CanvasLayerCheckbox } from "./Canvas.style";
 
 const projectId = process.env.REACT_APP_INFURA_API_ID
 const projectSecret = process.env.REACT_APP_INFURA_API_SECRET
@@ -156,45 +156,49 @@ export const CanvasView = ({
       <CanvasStage existingLayers={existingLayers} newLayer={newLayer} updateLayerCallback={updateLayerCallback} />
 
       <CanvasLeftMenu>
-        {isUploading ? (
-          <SimpleButton>Uploading...</SimpleButton>
-        ) : (
-          <div>
-            <label htmlFor="uploader">
-              <SimpleButton>New Layer</SimpleButton>
-            </label>
-            <input
-              hidden
-              id="uploader"
-              type="file"
-              accept="image/*"
-              onChange={(e: any) => {
-                e.target && e.target.files && e.target.files[0] && handleUpload(e.target.files[0])
-              }}
-            />
-          </div>
-        )}
-
-        {newLayer ? (
-          <Button icon="price" loading={isMinting} clickCallback={() => handleMint(newLayer)}>
-            Mint layer
-          </Button>
-        ) : (
-          <Button icon="price" loading clickCallback={() => {}}>
-            Mint layer
-          </Button>
-        )}
-
         <div>
-          {loadingLayers && (
-            <CanvasLoading>
-              <svg>
-                <use xlinkHref="/icons/sprites.svg#loading" />
-              </svg>
-              <div>Loading existing layers...</div>
-            </CanvasLoading>
-          )}
+          <label htmlFor="uploader">
+            <Button icon="upload" loading={isUploading}>
+              New Layer
+            </Button>
+          </label>
+          <input
+            hidden
+            id="uploader"
+            type="file"
+            accept="image/*"
+            onChange={(e: any) => {
+              e.target && e.target.files && e.target.files[0] && handleUpload(e.target.files[0])
+            }}
+          />
         </div>
+
+        <Button icon="merge" loading={isMinting} clickCallback={() => {}}>
+          Merge Canvas
+        </Button>
+
+        <CanvasLayers>
+          <CanvasLayer>
+            <img src="" alt="layer" />
+            <div>
+              <CanvasLayerDetails>
+                <div>
+                  <div className="title">Layer 15</div>
+                  <div className="subTitle">Score: 21</div>
+                </div>
+                <CanvasLayerCheckbox>
+                  <label className="container">
+                    <input type="checkbox" />
+                    <span className="checkmark"></span>
+                  </label>
+                </CanvasLayerCheckbox>
+              </CanvasLayerDetails>
+              <CanvasLayerVotes upVotes={3} downVotes={4}>
+                <div />
+              </CanvasLayerVotes>
+            </div>
+          </CanvasLayer>
+        </CanvasLayers>
       </CanvasLeftMenu>
 
       <CanvasRightMenu>

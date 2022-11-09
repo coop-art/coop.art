@@ -6,6 +6,7 @@ export interface WalletState {
   tronLink?: any
   coopartContract?: any
   loading: boolean
+  canvasId?: number
 }
 
 const walletDefaultState: WalletState = {
@@ -14,6 +15,7 @@ const walletDefaultState: WalletState = {
   tronLink: undefined,
   coopartContract: undefined,
   loading: false,
+  canvasId: undefined
 }
 
 export function wallet(state = walletDefaultState, action: any): WalletState {
@@ -35,6 +37,7 @@ export function wallet(state = walletDefaultState, action: any): WalletState {
       return {
         ...state,
         loading: false,
+        canvasId: action.canvasId
       }
     default:
       return state

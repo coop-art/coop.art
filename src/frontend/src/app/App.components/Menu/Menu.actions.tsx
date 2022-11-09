@@ -16,14 +16,14 @@ export const connectWallet = () => async (dispatch: any) => {
 
     const tronLink = await getTronLink()
     await tronLink?.request({ method: 'tron_requestAccounts' })
-    // const coopartContract = tronLink?.tronWeb.contract(abi.abi, '')
+    const coopartContract = tronLink?.tronWeb.contract(abi.abi, 'TQh3T2GJ7VY9qvFH5VVDUxq8kGu51ge7Bo')
 
     dispatch({
       type: CONNECT_WALLET,
       isConnected: true,
       address,
       tronLink,
-      coopartContract: '',
+      coopartContract,
     })
   } catch (e: any) {
     console.log(e)
@@ -41,16 +41,18 @@ export const createNewCanvas = () => async (dispatch: any, getState: any) => {
         type: CREATE_NEW_CANVAS_START,
       })
 
-      // const tx = await state.wallet?.coopartContract.mintCanvas(state.wallet.address!, '', '', 1, false).send({
-      //   callValue: 1,
-      //   shouldPollResponse: false,
-      // })
-      // const res = tx.wait()
+      const tx = await state.wallet?.coopartContract.mintCanvas(state.wallet.address!, '', '', 1, false).send({
+        callValue: 0,
+        shouldPollResponse: true,
+      })
+      console.log(tx.toNumber())
+      // const res = await tx.wait()
       // console.log(res)
 
-      // dispatch({
-      //   type: CREATE_NEW_CANVAS_DONE,
-      // })
+      dispatch({
+        type: CREATE_NEW_CANVAS_DONE,
+        canvasId: tx.toNumber(),
+      })
     } catch (e: any) {
       console.log(e)
       dispatch(showToaster('error', e.message, e.message))

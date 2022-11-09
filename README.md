@@ -27,7 +27,7 @@ You are now ready to create a new canvas or contribute to the existing canvases.
 
 Once the image is uploaded, it appears in the canvas. There you can move it around and resize it. Zoom in and out of the canvas with your wheel, and move around by drag&droping the canvas. This is an infinite canvas, you can go crazy! Once you are done, click _Mint layer_ in the right panel to save it in the smart contract. A Tron transaction automatically starts.
 
-Click confirm to start the minting transaction. A notification in the top right corner tells you that the transaction has been sent. Wait a few seconds, and another notification will tell you that the layer has been minted. You can check out TronScan to confirm that the transaction is indeed successful. This canvas is now officially started. You can add more layers yourself or wait for others to contribute. The first contributor (you) become the admin of the canavas and is at any time able to select layers, merge them and mint the final NFT. More on that below.
+Click confirm to start the minting transaction. A notification in the top right corner tells you that the transaction has been sent. Wait a few seconds, and another notification will tell you that the layer has been minted. You can check out TronScan to confirm that the transaction is indeed successful. This canvas is now officially started. You can add more layers yourself or wait for others to contribute. The first contributor (you) become the admin of the canvas and is at any time able to select layers, merge them and mint the final NFT. More on that below.
 
 ## Contribute to existing canvas
 
@@ -35,7 +35,7 @@ Head over to `Ongoing Canvases` to see canvases you can contribute to. You shoul
 
 ## Vote on layers
 
-Now, what if someone ruins a canvas with an inappropriate layer? That's where voting comes into play. If you believe a layer should not be in a canvas, you can downvote it to be removed. On the contrary, if you believe a layer is a perfect match for the canvas, you can upvote it to keep it up. If a layer has more downvotes than upvotes, it is hidden by default. Ultimatly, the admin of the canavas is the one that will choose the layers to add or remove from the canvas mint, but this will help him choose. (We first wanted to code fully decentralized version with no admin, like each canvas being its own DAO, but realized this wouldn't work, people with more voting powers could overtake the initial vision of the first layer artist, so we decided on a more centralized approach.)
+Now, what if someone ruins a canvas with an inappropriate layer? That's where voting comes into play. If you believe a layer should not be in a canvas, you can downvote it to be removed. On the contrary, if you believe a layer is a perfect match for the canvas, you can upvote it to keep it up. If a layer has more downvotes than upvotes, it is hidden by default. Ultimatly, the admin of the canvas is the one that will choose the layers to add or remove from the canvas mint, but this will help him choose. (We first wanted to code fully decentralized version with no admin, like each canvas being its own DAO, but realized this wouldn't work, people with more voting powers could overtake the initial vision of the first layer artist, so we decided on a more centralized approach.)
 
 ## Sell canvas
 

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { State } from 'reducers'
 import { connectWallet, createNewCanvas } from './Menu.actions'
@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 
 export const Menu = () => {
   const navigate = useNavigate()
-  const { isConnected, address, loading } = useSelector((state: State) => state.wallet)
+  const { isConnected, address, loading, canvasId } = useSelector((state: State) => state.wallet)
   const dispatch = useDispatch()
 
   const connectCallback = () => {
@@ -19,6 +19,11 @@ export const Menu = () => {
     //@ts-ignore
     dispatch(createNewCanvas())
   }
+
+  useEffect(() => {
+    console.log('Menu', canvasId)
+    if (canvasId) navigate(`/edit/${canvasId}`)
+  }, [canvasId, navigate])
 
   return (
     <MenuView

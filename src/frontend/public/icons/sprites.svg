@@ -285,11 +285,12 @@
             <rect fill="none" stroke="none" width="18" height="18"></rect>
         </g>
     </symbol>
-    <symbol id="grid" viewBox="0 0 18 18">
+    <symbol id="merge" viewBox="0 0 18 18">
         <g>
-            <path d="M15.75 1.12256H2.25C1.62868 1.12256 1.125 1.62624 1.125 2.24756V15.7476C1.125 16.3689 1.62868 16.8726 2.25 16.8726H15.75C16.3713 16.8726 16.875 16.3689 16.875 15.7476V2.24756C16.875 1.62624 16.3713 1.12256 15.75 1.12256Z" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M9 1.12256V16.8726" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M1.125 8.99756H16.875" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M17.625 7.875L9 11.625L0.375 7.875" fill="none" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M17.625 10.125L9 13.875L0.375 10.125" fill="none" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M17.625 12.375L9 16.125L0.375 12.375" fill="none" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 9.375L0.375 5.625L9 1.875L17.625 5.625L9 9.375Z" fill="none" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
         </g>
         <g id="Invisible_Shape">
             <rect fill="none" stroke="none" width="18" height="18"></rect>
