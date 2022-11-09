@@ -7,7 +7,7 @@ import { Buffer } from 'buffer'
 import { CanvasStage } from './Canvas.stage'
 import { Vote } from './Canvas.controller'
 // prettier-ignore
-import { CanvasLoading, CanvasMenu, CanvasStyled, CanvasVoting, SimpleButton, LayerVoting } from "./Canvas.style";
+import { CanvasLoading, CanvasLeftMenu, CanvasStyled, CanvasRightMenu, SimpleButton, LayerVoting } from "./Canvas.style";
 
 const projectId = process.env.REACT_APP_INFURA_API_ID
 const projectSecret = process.env.REACT_APP_INFURA_API_SECRET
@@ -153,13 +153,15 @@ export const CanvasView = ({
 
   return (
     <CanvasStyled>
-      <CanvasMenu>
+      <CanvasStage existingLayers={existingLayers} newLayer={newLayer} updateLayerCallback={updateLayerCallback} />
+
+      <CanvasLeftMenu>
         {isUploading ? (
           <SimpleButton>Uploading...</SimpleButton>
         ) : (
           <div>
             <label htmlFor="uploader">
-              <SimpleButton>Upload Image</SimpleButton>
+              <SimpleButton>New Layer</SimpleButton>
             </label>
             <input
               hidden
@@ -193,11 +195,9 @@ export const CanvasView = ({
             </CanvasLoading>
           )}
         </div>
-      </CanvasMenu>
+      </CanvasLeftMenu>
 
-      <CanvasStage existingLayers={existingLayers} newLayer={newLayer} updateLayerCallback={updateLayerCallback} />
-
-      <CanvasVoting>
+      <CanvasRightMenu>
         {existingLayers.map((layer: Layer) => (
           <LayerVoting>
             <img alt="layer" src={layer.image} />
@@ -206,7 +206,7 @@ export const CanvasView = ({
             <img alt="cross" src="/icons/cross.svg" onClick={() => handleVote(layer.layerId, false)} />
           </LayerVoting>
         ))}
-      </CanvasVoting>
+      </CanvasRightMenu>
     </CanvasStyled>
   )
 }

@@ -3,30 +3,46 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { Button } from '../Button/Button.view'
-import { MenuBar, MenuLogo, MenuStyled } from './Menu.style'
+import { MenuBar, MenuLogo, MenuStyled, MenuLeft, MenuLoading } from './Menu.style'
 
 type MenuViewProps = {
-  showing: boolean
-  setShowing: (status: boolean) => void
+  loading: boolean
   isConnected?: boolean
   connectCallback: () => void
   address?: string
+  createNewCanvasCallback: () => void
 }
 
-export const MenuView = ({ showing, setShowing, isConnected, address, connectCallback }: MenuViewProps) => {
+export const MenuView = ({
+  loading,
+  isConnected,
+  address,
+  connectCallback,
+  createNewCanvasCallback,
+}: MenuViewProps) => {
   return (
     <MenuStyled>
-      <MenuBar showing={showing}>
-        <Link to="/" onClick={() => setShowing(false)}>
-          <MenuLogo alt="CoopArt" src="/logo.svg" />
-        </Link>
-        {address ? (
-          <div>{truncate(address)}</div>
-        ) : (
-          <Button appearance="primary" icon="tron" clickCallback={() => connectCallback()}>
-            Connect TronLink
-          </Button>
-        )}
+      <MenuBar>
+        <Link to="/">{/* <MenuLogo alt="CoopArt" src="/logo.svg" /> */}</Link>
+        <div />
+        <MenuLeft>
+          <Link to="/">All Canvas</Link>
+          {loading ? (
+            <MenuLoading src="/images/loader.svg" />
+          ) : (
+            <div style={{ cursor: 'pointer' }} onClick={() => createNewCanvasCallback()}>
+              New Canvas
+            </div>
+          )}
+
+          {address ? (
+            <div>{truncate(address)}</div>
+          ) : (
+            <Button appearance="primary" icon="tron" clickCallback={() => connectCallback()}>
+              Connect TronLink
+            </Button>
+          )}
+        </MenuLeft>
       </MenuBar>
     </MenuStyled>
   )

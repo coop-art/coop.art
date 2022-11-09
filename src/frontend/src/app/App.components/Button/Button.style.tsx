@@ -9,8 +9,8 @@ export const ButtonStyled = styled.button<{ appearance: string }>`
 
     switch (props.appearance) {
       case 'primary':
-        elementBackgroundColor = backgroundColor
-        elementTextColor = textColor
+        elementBackgroundColor = textColor
+        elementTextColor = backgroundColor
         break
       case 'secondary':
         elementBackgroundColor = backgroundColor
@@ -36,24 +36,24 @@ export const ButtonStyled = styled.button<{ appearance: string }>`
   }}
 
   font-family: 'Electrolize', Helvetica, Arial, sans-serif;
-  height: 30px;
+  height: 40px;
   background-blend-mode: soft-light, normal;
   border: 1px solid ${textColor};
   box-sizing: border-box;
-  border-radius: 6px;
-  font-weight: normal;
+  border-radius: 10px;
+  font-weight: bold;
   font-size: 14px;
   display: grid;
   grid-template-columns: 18px auto;
   grid-gap: 10px;
   cursor: pointer;
-  line-height: 30px;
+  line-height: 40px;
   padding: 0 10px !important;
   margin: 0 auto !important;
   width: 170px;
 
   > svg {
-    margin: 5px 0;
+    margin: 10px 0;
     width: 18px;
     height: 18px;
   }

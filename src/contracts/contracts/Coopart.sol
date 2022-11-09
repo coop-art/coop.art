@@ -19,6 +19,11 @@ contract Coopart is ERC721, Ownable, ReentrancyGuard {
     struct Layer {
         string imageUri;
         address author;
+        uint256 x;
+        uint256 y;
+        uint256 r;
+        uint256 width;
+        uint256 height;
         uint256 upVotes;
         uint256 downVotes;
     }
@@ -74,11 +79,16 @@ contract Coopart is ERC721, Ownable, ReentrancyGuard {
     function addLayer(
         uint256 _canvasId,
         string memory _imageUri,
-        address _author
+        address _author,
+        uint256 _x,
+        uint256 _y,
+        uint256 _r,
+        uint256 _width,
+        uint256 _height
     ) public returns (uint256) {
         layerCount.increment();
         uint256 newLayerId = layerCount.current();
-        layers[newLayerId] = Layer(_imageUri, _author, 0, 0);
+        layers[newLayerId] = Layer(_imageUri, _author, _x, _y, _r, _width, _height, 0, 0);
         // _tokenMeta[_canvasId].push(newLayerId);
         TokenMeta storage meta = _tokenMeta[_canvasId];
         meta.layerIds.push(newLayerId);
